@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Xymera - Operations Management System</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    @media only screen and (max-width: 940px) {
+      .datatable-container{
+        overflow-x: scroll;
+      }
+      .datatable-table{
+        max-width: 1000px !important;
+        width: 1000px;
+        overflow-x: scroll;
+      }
+    }
+    @media only screen and (max-width: 460px) {
+      .datatable-top{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      .datatable-top > div:last-child {
+        margin-top: 1rem;
+      }
+    }
+    @media only screen and (max-width: 575px) {
+      .mt-small-sm-responsive{
+        margin-top: 15px;
+      }
+    }
+    @media only screen and (max-width: 370px) {
+      .datatable-bottom{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      .datatable-bottom > nav{
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <div id="header-placeholder"></div>
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <div id="sidebar-placeholder"></div><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle mb-4">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1>Chemist</h1>
+        </div>
+        <div class="col-sm-6 text-sm-end mt-small-sm-responsive">
+          <button class="btn btn-sm btn-warning  employee_restriction_d_none" id="download_sample_file_btn" modeltype="chemist"  title="Download Sample File" ><i class="ri-download-cloud-2-fill"></i></button>
+          <button class="btn btn-sm btn-warning  employee_restriction_d_none" title="Import Table" modeltype="chemist" data-bs-toggle="modal" data-bs-target="#modal_IMPORT" ><i class="ri-upload-2-line"></i></button>
+          <button class="btn btn-sm btn-warning disabled employee_restriction_d_none" id="download_excel_multiple_file"  modelName="User" title="Export Table" data-bs-toggle="modal" data-bs-target="#modal_EXPORT"   ><i class="ri-download-2-line"></i></button>
+          
+          <a href="add-chemist.html" class="btn btn-sm btn-primary" >Add Chemist</a>
+          <button id="delete_btn_multiple_file" class="btn btn-sm btn-danger disabled employee_restriction_d_none " data-bs-toggle="modal" data-bs-target="#modal_DELETE" >Delete Multiple Data</button>
+        </div>
+      </div>
+    </div><!-- End Page Title -->
+
+    <section class="section bg-white p-3 rounded shadow-sm">
+      <div class="row">
+        <div class="col-lg-12">
+
+
+          <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+            <div class="datatable-top">
+              
+              <!-- this is for pagination -->
+              <div class="datatable-dropdown"  id="div_select_option_dynamic_js_pagination"></div>
+
+              <div class="datatable-search">
+                <!-- Search Input -->
+                <input 
+                  id="chemist-search" 
+                  class="datatable-input" 
+                  placeholder="Search Chemists..." 
+                  type="search" 
+                  name="search" 
+                  title="Search within Chemist table" 
+               
+                />
+              </div>
+            </div>
+          
+            <div class="datatable-container">
+              <table class="table datatable datatable-table">
+                <thead>
+                  <tr>
+                    <th class="employee_restriction_d_none " data-sortable="true" style="width: 4%;">
+                      <input type="checkbox" class="checkbox_all" name="" id="">
+                    </th>
+                    <th data-sortable="true" style="width: 15%;" >Name (ID)</th>
+                    <th data-sortable="true" style="width: 8%;">Mobile No</th>
+                    <th data-sortable="true" style="width: 5%;">Status</th>
+                    <th data-sortable="true" style="width: 10%; text-align: right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="all_data_list_table"></tbody>
+              </table>
+            </div>
+          
+            <!-- this is for pagination -->
+            <div class="datatable-bottom" id="div_footer_button_dynamic_js_pagination"></div>
+
+          </div>
+
+
+
+      <!-- Modal Template -->
+     
+
+
+    <div class="modal fade" id="modal_EDIT" tabindex="-1" data-bs-backdrop="false" aria-hidden="true" style="display: none; background-color:rgba(0, 0, 0, 0.507);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-end">
+            <button type="button" style="font-size: 25px !important;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mt-0 pt-0 text-center">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="modal-title">Edit</h2>
+              </div>
+              <div class="col-12">Edit the Status</div>
+            </div>
+            <div class="row  pt-5 pb-4  ">
+              <div class="col-12">
+                <form action="" id="edit_status">
+                  <div class="row">
+                    <div class="col-6" >
+                      <input type="text" name="" id="_hidden_id_model" hidden class="hidden">
+                      <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Inactive</button>
+                    </div>
+                    <div class="col-6" >
+                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Active</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    
+    <div class="modal fade" id="modal_IMPORT" tabindex="-1" data-bs-backdrop="false" aria-hidden="true" style="display: none; background-color:rgba(0, 0, 0, 0.507);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-end">
+            <button type="button" style="font-size: 25px !important;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mt-0 pt-0 text-center">
+            <form action="" id="import_excel_file_form" modeltype="chemist">
+              <div class="row">
+                <div class="col-12">
+                  <h2 class="modal-title">Import Data</h2>
+                </div>
+              </div>
+              <div class="row pt-4 pb-4 gap-4">
+                <div class="col-12">
+                  <!-- Drag and Drop Zone -->
+                  <div id="dropZone" class="drag-drop-zone_import">
+                    <p>Drag & Drop Excel File Here or <span>Select Files</span></p>
+                    <input type="file" id="fileInputImport" multiple hidden>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-6">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col-6">
+                      <button type="submit" id="importButton" class="btn btn-primary">Import Data</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+     
+    <div class="modal fade" id="modal_EXPORT" tabindex="-1" data-bs-backdrop="false" aria-hidden="true" style="display: none; background-color:rgba(0, 0, 0, 0.507);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-end">
+            <button type="button" style="font-size: 25px !important;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mt-0 pt-0 text-center">
+            <form action="" id="download_excel_multiple_file" modelName="User">
+
+            <div class="row">
+              <div class="col-12">
+                <h2 class="modal-title">Export Data</h2>
+              </div>
+              <div class="col-12">Are you sure, you want to Export?</div>
+            </div>
+            <div class="row  pt-5 pb-4  ">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-6" >
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  </div>
+                  <div class="col-6" >
+                    <button type="submit" id="exportButton" class="btn btn-primary">Export</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+          <div class="modal fade" id="modal_DELETE" tabindex="-1" data-bs-backdrop="false" aria-hidden="true" style="display: none; background-color:rgba(0, 0, 0, 0.507);">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="text-end">
+                  <button type="button" style="font-size: 25px !important;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mt-0 pt-0 text-center">
+                  <div class="row">
+                    <div class="col-12">
+                      <h2 class="modal-title">Delete Data</h2>
+                    </div>
+                    <div class="col-12">Are you sure, you want to delete?</div>
+                  </div>
+                  <div class="row  pt-5 pb-4  ">
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-6" >
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="col-6" >
+                          <button type="submit" id="deleteButton" class="btn btn-primary">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  
+  <!-- ======= Footer ======= -->
+  <div id="footer-placeholder"></div>
+  <!-- End Footer -->
+  
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  <script type="module" src="./assets/custom-js/manage-chemist.js"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <!-- <script src="assets/vendor/simple-datatables/simple-datatables.js"></script> -->
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <!-- <script src="assets/js/main.js"></script> -->
+  <script>
+    $(document).ready(function () {
+      $("#header-placeholder").load("header.html", function () {
+        if ($('.toggle-sidebar-btn')) {
+          $('.toggle-sidebar-btn').on('click', function (e) {
+            $('body').toggleClass('toggle-sidebar');
+          });
+        }
+      });
+
+      $("#sidebar-placeholder").load("sidebar.html");
+      $("#footer-placeholder").load("footer.html");
+    });
+  </script>
+
+</body>

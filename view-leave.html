@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Xymera - Operations Management System</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <div id="header-placeholder"></div>
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <div id="sidebar-placeholder"></div><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle mb-4">
+      <h1>View Leave</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section bg-white p-3 rounded shadow-sm">
+        <form action="" id="leaveFormSubmit">
+          <div class="row g-3 px-3">
+
+            <div class="col-lg-12">
+              <label for="leaveStatus" class="form-label small mb-2">Select Status</label>
+              <select class="form-select" id="leaveStatus" disabled>
+                <option value="" disabled selected>Select Option</option>
+                <option value="Pending">Pending</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Approved">Approved</option>
+              </select>
+            </div>
+            
+            <div class="col-lg-4">
+              <label for="leaveStart" class="form-label small mb-2">Leave Start</label>
+              <input type="date" class="form-control" id="leaveStart" disabled required>
+            </div>
+  
+            <div class="col-lg-4">
+              <label for="leaveEnd" class="form-label small mb-2">Leave End</label>
+              <input type="date" class="form-control" id="leaveEnd" disabled required>
+            </div>
+  
+            <div class="col-lg-4">
+              <label for="halfDay" class="form-label small mb-2">Half Day?</label>
+              <select class="form-select" id="halfDay" disabled>
+                <option value="" disabled selected>Select Option</option>
+                <option value="First Half" >First Half</option>
+                <option value="Second Half">Second Half</option>
+                <option value="Full Day" selected>Full Day</option>
+              </select>
+            </div>
+  
+            <div class="col-lg-6">
+              <label for="leaveType" class="form-label small mb-2">Leave Type</label>
+              <select class="form-select" id="leaveType" disabled>
+                <option value="" disabled selected>SELECT LEAVE TYPE</option>
+                <option value="vacation">VACATION LEAVE</option>
+                <option value="maternity">MATERNITY/PATERNITY LEAVE</option>
+                <option value="sick">SICK LEAVE</option>
+                <option value="casual">CASUAL LEAVE</option>
+                <option value="other">OTHER</option>
+              </select>
+            </div>
+  
+            <div class="col-lg-6">
+              <label for="noOfDays" class="form-label small mb-2">No. of Days</label>
+              <input  class="form-control" id="noOfDays" readonly disabled>
+            </div>
+  
+  
+            <div class="col-lg-12">
+              <label for="leaveReason" class="form-label small mb-2">Leave Reason</label>
+              <textarea class="form-control" id="leaveReason" rows="3" disabled required></textarea>
+            </div>
+  
+            <div class="col-lg-12">
+              <label for="approvalReason" class="form-label small mb-2">Reason on Approval/Rejection of Leave</label>
+              <textarea class="form-control" id="approvalReason" rows="3" disabled required></textarea>
+            </div>
+  
+            <div class="col-lg-6 d-flex align-items-end">
+              <!-- <button type="button" class="btn btn-success">File Leave</button> -->
+              <button onclick="history.back()" class="btn btn-secondary">Back</button>
+            </div>
+  
+          </div>
+        </form>
+    </section>
+
+  </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+  <div id="footer-placeholder"></div>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script type="module" src="assets/custom-js/edit-leave.js"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>

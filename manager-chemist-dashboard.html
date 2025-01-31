@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Xymera - Operations Management System</title>
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css">
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+  </head>
+  <body> 
+      <!-- ======= Header ======= -->
+  <div id="header-placeholder"></div>
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <div id="sidebar-placeholder"></div><!-- End Sidebar-->
+      <main id="main" class="main">
+      <section class="section dashboard dashboard-details">
+        <div class="pagetitle mb-4">
+          <h1>Manager Chemist's Visit</h1>
+        </div><!-- End Page Title -->
+        <div class="card shadow-sm mb-2">
+          <div class="card-body p-4">
+            <h6 class="mb-0">Fill out this form to create visit.</h6>
+            <hr class="pb-0 mb-3">
+
+            <form class="row" id="doctor_visit_create_form" >
+              <div class="col-md-2 ">
+                <select class="form-select" id="selectAreaDoc" title="Doctor's Area">
+                  <option value="all" selected>Select Area</option>
+                </select>
+              </div>
+
+
+              <div class="col-md-3 ">
+                <select class="form-select" id="selectAssignDoct" title="Select Doctor">
+                  <option disabled selected>Select Chemist (Visit)</option>
+                </select>
+              </div>
+              <div class="col-md-2 ">
+                <input id="visitDateEmp" type="date" class="form-control w-100" placeholder="Select Date and Time" title="Select Date and Time" >
+              </div>
+
+              
+              <div class="col-md-3 ">
+                <div class="dropdown_my_shivaur_m">
+                  <div class="dropdown-btn_my_shivaur_m form-select" onclick="toggleDropdown_my_shivaur_m()" style="font-size: 13px !important;">Select Product</div>
+                  <div class="dropdown-content_my_shivaur_m" id="dropdownContent_my_shivaur_m"></div>
+                </div>
+              </div>
+              <div class="col-md-2 ">
+                <div id="selectedAssignees_my_shivaur_m" class="form-control py-0 px-1 d-flex align-items-center" readonly=""></div>
+              </div>
+              
+
+
+              <div class="col-md-2 mt-md-2">
+                <select class="form-select" id="workingWithEmp" title="working with">
+                  <option disabled selected>Working with</option>
+                  <option value="Director" >You (Director)</option>
+                  <option value="Alone" >Alone</option>
+                  <option value="Manager" >Manager</option>
+                </select>
+              </div>
+              <div class="col-md-3 mt-md-2 ">
+                <div class="dropdown_my_shivaur_m2">
+                  <div class="dropdown-btn_my_shivaur_m2 form-select" onclick="toggleDropdown_my_shivaur_m2()" style="font-size: 13px !important;">Select Employee</div>
+                  <div class="dropdown-content_my_shivaur_m2" id="dropdownContent_my_shivaur_m2"></div>
+                </div>
+              </div>
+              <div class="col-md-2 mt-md-2 ">
+                <div id="selectedAssignees_my_shivaur_m2" class="form-control py-0 px-1 d-flex align-items-center" readonly=""></div>
+              </div>
+
+              <div class="col-md-3 mt-md-2 ">
+                <div class="dropdown_my_shivaur_m4">
+                  <div class="dropdown-btn_my_shivaur_m4 form-select" onclick="toggleDropdown_my_shivaur_m4()" style="font-size: 13px !important;">Select Manager</div>
+                  <div class="dropdown-content_my_shivaur_m4" id="dropdownContent_my_shivaur_m4"></div>
+                </div>
+              </div>
+              <div class="col-md-2 mt-md-2 ">
+                <div id="selectedAssignees_my_shivaur_m4" class="form-control py-0 px-1 d-flex align-items-center" readonly=""></div>
+              </div>
+
+
+              <div class="col-md-12 mt-md-2">
+                <button type="submit" class="btn-dark btn w-100" id="create_btn_emp_visit_btn"> Create </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+        <div class="card shadow-sm">
+          
+          <div class="card-body p-4">
+            
+            
+            <div style="display: none;" class="row bg-custom-primary rounded p-3 mb-4">
+              <div class="col-md-6">
+                <form class="row rounded" method="post">
+                  <div class="col-md-12 d-flex gap-1">
+                    
+                    <select class="form-select" id="" title="working with">
+                      <option value="">By Chemist Name</option>
+                      <option value="">By Product Name</option>
+                      <option value="">By Visit Status</option>
+                      <option value="">By With Whom</option>
+                    </select>
+                    <input type="text" class="form-control rounded-0 rounded-start" name="search" placeholder="Search Here">
+                    <button type="submit" class="btn-primary btn rounded-0 rounded-end">Search</button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-3 offset-md-2 text-end">
+                <form class="row rounded" method="post">
+                    <select class="form-select" id="searchEmployeeDropDown">
+                      <option disabled="" selected="">Select Employee</option>
+                    </select>
+                </form>
+              </div>
+              <div class="col-md-1 text-end">
+                <div class="dropdown">
+                  <button class="btn-dark btn" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots"></i>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li>
+                      <a class="dropdown-item" href="#">Today</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Tomorrow</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Yesterday</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Current Week</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Last Week</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Quarter</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Semi Annual</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Annually</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="visits-div-scroller pe-4" id="dynamic_emp_visit_render"></div>
+          </div>
+
+          <div class="floating-right">
+            <a href="leave-application.html" class="btn btn fs-6 btn-warning">Leaves</a>
+            <a href="manager-dashboard.html" class="btn btn fs-6 btn-dark">Doctor's Visits</a>
+            <a href="coverage-calculation.html" class="btn btn fs-6 btn-primary">Employee Coverage</a>
+        </div>
+        </div>
+      </section>
+      
+    </main> 
+
+
+
+
+    <div class="modal fade" id="modal_ALL_FREQUENCY_ON_ONE_CLICK" tabindex="-1" data-bs-backdrop="false" aria-hidden="true" style="display: none; background-color:rgba(0, 0, 0, 0.507);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-end">
+            <button type="button" style="font-size: 25px !important;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mt-0 pt-0 text-center">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="modal-title">All Frequency Status!</h2>
+              </div>
+              <div class="col-12">Are you sure, you complete all the frequency of this date?</div>
+            </div>
+            <div class="row  pt-5 pb-4  ">
+              <div class="col-12">
+                <form action="" id="all_edit_all_status_frequency">
+                  <div class="row">
+                    <div class="col-6" >
+                      <input type="text" name="" id="_hidden_id_of_date_selected" hidden class="hidden">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    </div>
+                    <div class="col-6" >
+                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Yes, Procedd</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    
+
+    <div class="modal fade" id="modal_EDIT_STATUS_FREQUENCY" tabindex="-1" data-bs-backdrop="false" aria-hidden="true" style="display: none; background-color:rgba(0, 0, 0, 0.507);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-end">
+            <button type="button" style="font-size: 25px !important;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mt-0 pt-0 text-center">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="modal-title">Frequency Status</h2>
+              </div>
+              <div class="col-12">Are you sure, you completed this Frequency?</div>
+            </div>
+            <div class="row  pt-5 pb-4  ">
+              <div class="col-12">
+                <form action="" id="edit_status_frequency">
+                  <div class="row">
+                    <div class="col-6" >
+                      <input type="text" name="" id="_hidden_id_model" hidden class="hidden">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+                    </div>
+                    <div class="col-6" >
+                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">YES</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+         
+    <div class="modal fade" id="modal_NEXT_VISIT" tabindex="-1" data-bs-backdrop="false" aria-hidden="true" style="background-color:rgba(0, 0, 0, 0.507);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-end">
+            <button type="button" style="font-size: 25px !important;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mt-0 pt-0 text-center">
+            <form id="NEXT_VISIT_FORM_DATE">
+              <div class="row">
+                <div class="col-12">
+                  <h2 class="modal-title">Schedule New Visit</h2>
+                </div>
+                <div class="col-12 mt-2">Please Select Next Date to, Schedule the New Visit.</div>
+                <div class="col-12 d-flex justify-content-center mt-3"><input type="date" class="form-control w-50"></div>
+                <input type="text" name="" id="_id_schedule_date_hidden" hidden style="display: none;" class="hidden d-none">
+              </div>
+              <div class="row  pt-4 pb-4  ">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-6" >
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="col-6" >
+                      <button type="submit" id="" class="btn btn-primary">Update</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal_COMPLETE_VISIT" tabindex="-1" data-bs-backdrop="false" aria-hidden="true" style="background-color:rgba(0, 0, 0, 0.507);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-end">
+            <button type="button" style="font-size: 25px !important;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mt-0 pt-0 text-center">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="modal-title">Visit Status !</h2>
+              </div>
+              <div class="col-12">Are you sure, you want to complete the visit?</div>
+              <input type="text" name="" id="_id_visit_status_hidden" hidden style="display: none;" class="hidden d-none">
+            </div>
+            <div class="row  pt-5 pb-4  ">
+              <div class="col-12">
+                <form action="" id="edit_status">
+                  <div class="row">
+                    <div class="col-6" >
+                      <input type="text" name="" id="_id_visit_status_hidden" hidden class="hidden">
+                      <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Pending</button>
+                    </div>
+                    <div class="col-6" >
+                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Success</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visit Details Modal -->
+    <div class="modal fade" id="modal_VISIT_DETAILS" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" style="max-height: 600px; width: 600px;">
+        <div class="modal-content" style="max-height: 455px;">
+          <!-- Modal Header with Close Button -->
+          <div class="modal-header border-bottom-1" id="classListChangeHeaderModal">
+            <h5 class="modal-title" id="modalVisitDetailsLabel">Doctor Visit Details</h5>
+            <button type="button" class="btn-close fs-3" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <!-- Modal Body with Visit Information -->
+          <div class="modal-body p-0" id="singleVisitModelBody" style="overflow-y: auto; height: 500px;"></div>
+          
+          <!-- Optional: Modal Footer -->
+          <!-- <div class="modal-footer border-top-0"> </div> -->
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="modal fade" id="modal_DELETE" tabindex="-1" data-bs-backdrop="false" aria-hidden="true" style="background-color:rgba(0, 0, 0, 0.507);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-end">
+            <button type="button" style="font-size: 25px !important;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mt-0 pt-0 text-center">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="modal-title">Delete Data</h2>
+              </div>
+              <div class="col-12">Are you sure, you want to delete?</div>
+            </div>
+            <div class="row  pt-5 pb-4  ">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-6" >
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  </div>
+                  <div class="col-6" >
+                    <button type="submit" id="deleteButton" class="btn btn-primary">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal_CHAT_BOX" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
+          <!-- Header -->
+          <div class="modal-header bg-primary text-white d-flex align-items-center">
+            <h5 class="modal-title">Remark Box</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="font-size: 30px !important;"></button>
+          </div>
+    
+          <!-- Chat Area -->
+          <div class="modal-body p-4 px-3" style="background-color: #f7f7f7; max-height: 400px; overflow-y: auto;">
+            <div class="chat-box" id="remark_box_display" >
+              <!-- Example left chat -->
+              <div class="d-flex align-items-start mb-4     d-none">
+                <div class="d-flex flex-column align-items-center me-2">
+                  <img src="https://via.placeholder.com/40" alt="Profile" class="rounded-circle border border-primary" style="width: 40px; height: 40px;"/>
+                  <span class="text-muted small mt-1">(Manager)</span>
+                </div>
+                <div>
+                  <div class="p-3 bg-secondary text-white rounded-start rounded-end shadow-sm" style="max-width: 85%;">Hello! How can I help you today?</div>
+                  <div class="text-muted small mt-1">Dec 5, 2024, 10:15 AM</div>
+                </div>
+              </div>
+    
+              <!-- Example right chat -->
+              <div class="d-flex justify-content-end align-items-start mb-4       d-none">
+                <div class="d-flex flex-column align-items-end position-relative">
+                  <!-- Pencil icon in button -->
+                  <button type="button" class="btn btn-light btn-sm p-1 position-absolute" style="right: 85%; margin-right: 5px; top: 40%; transform: translateY(-50%);" title="Edit message"><i class="ri-pencil-line text-muted"></i></button>
+                  <div class="p-3 bg-primary text-white rounded-start rounded-end shadow-sm" style="max-width: 85%;">Hi! I need assistance with deleting some data.</div>
+                  <div class="text-muted small mt-1 text-end">Dec 5, 2024, 10:16 AM</div>
+                </div>
+                <div class="d-flex flex-column align-items-center ms-2">
+                  <img src="https://via.placeholder.com/40" alt="Profile" class="rounded-circle border border-primary" style="width: 40px; height: 40px;"/>
+                  <span class="text-muted small mt-1">(You)</span>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+    
+          <!-- Footer -->
+          <form id="sendReviewBtnFormModel" class="d-none" >
+            <div class="modal-footer bg-light d-flex align-items-center p-3" style="border-top: 1px solid #ddd; background-color: #fff;">
+              <div class="input-group" style="flex-grow: 1; border-radius: 25px; overflow: hidden; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); ">
+                <input type="text" id="chatInput" class="form-control" placeholder="Type your remark here..." style="border: none; padding: 12px; font-size: 14px;"/>
+                <button type="submit" class="btn btn-primary" id="sendButton" style="border-radius: 0; display: flex; align-items: center; justify-content: center;"> <i class="ri-send-plane-fill" style="font-size: 20px; transform: rotate(45deg);"></i></button>
+              </div>
+            </div>
+          </form>
+          <form id="waitReviewBtnFormModel" class="d-none" >
+            <div class="modal-footer bg-light d-flex align  -items-center p-2" style="border-top: 1px solid #ddd; background-color: #fff;">
+              <div class="input-group text-center text-success d-flex justify-content-center" style="flex-grow: 1; border-radius: 25px; overflow: hidden; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); background-color: #80808033; ">
+                your remark is submitted successfully.
+              </div>
+            </div>
+          </form>
+          <form id="statusReviewBtnFormModel" class="d-none" >
+            <div class="modal-footer bg-light d-flex align  -items-center p-2" style="border-top: 1px solid #ddd; background-color: #fff;">
+              <div class="input-group text-center text-success d-flex justify-content-center" style="flex-grow: 1; border-radius: 25px; overflow: hidden; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); background-color: #80808033; ">
+                Remark Completed
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal_I_FRAME"   tabindex="-1" aria-modal="false" role="dialog" style="background-color: rgba(0, 0, 0, 0.5);" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-end">
+            <button type="button" style="font-size: 25px !important;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mt-0 pt-0 text-center" style="height: 500px;">
+            <iframe id="myIframe" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- ======= Footer ======= -->
+  <div id="footer-placeholder"></div>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+  
+    
+  <input type="checkbox" class="checkbox_all hidden d-none" hidden style="display: none;">
+  <script type="module" src="assets/custom-js/manager-chemist-dashboard.js"></script>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/quill/quill.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
+    <!-- Template Main JS File -->
+    <!-- <script src="assets/js/main.js"></script> -->
+    <script>
+      $(document).ready(function () {
+        $("#header-placeholder").load("header.html", function () {
+          if ($('.toggle-sidebar-btn')) {
+            $('.toggle-sidebar-btn').on('click', function (e) {
+              $('body').toggleClass('toggle-sidebar');
+            });
+          }
+        });
+
+        $("#sidebar-placeholder").load("sidebar.html");
+        $("#footer-placeholder").load("footer.html");
+      });
+    </script>
+  
+  </body>

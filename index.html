@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Xymera - Operations Management System</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 500px; /* Set height for the map */
+      width: 100%; /* Full width */
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <div id="header-placeholder"></div>
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <div id="sidebar-placeholder"></div><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <!-- Start Page Title --
+    <div class="pagetitle mb-4">
+      <h1>Admin Dashboard</h1>
+      <p class="mt-2">Welcome Admin!</p>
+    </div>
+    -- End Page Title -->
+
+    <section class="section admin-dashboard">
+      <div class="row alerts-admin-dashboard">
+        <div class="col-md-6">
+          <div class="alert alert-primary alert-dismissible fade show" role="alert">
+              <i class="bi bi-star me-1"></i> Jump to the tasks list
+              <a href="admin-task-dashboard.html" class="btn btn-sm btn-warning float-end">View Tasks</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="alert alert-primary alert-dismissible fade show" role="alert">
+              <i class="bi bi-star me-1"></i> Check employee coverage
+              <a href="coverage-calculation.html" class="btn btn-sm btn-warning float-end">View Coverage</a>
+            </div>
+        </div>
+      </div>
+      
+      <!-- ==================== HTML Code (example with added IDs for increments) ==================== -->
+      <div class="row">
+        <!-- Doctor’s visit schedule -->
+        <div class="col-xxl-4 col-md-4">
+          <div class="card shadow-sm info-card sales-card feature-cards">
+            <!-- Add a data-type for the dropdown filtering -->
+            <div class="filter" data-type="doctor-visit-schedule">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li><a class="dropdown-item" href="#" data-period="all">All</a></li>
+                <li><a class="dropdown-item" href="#" data-period="today">Today</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisWeek">This Week</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisMonth">This Month</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisYear">This Year</a></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Doctor’s visit schedule</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-arrow-right-circle-fill"></i>
+                </div>
+                <div class="ps-3">
+                  <h6 id="doctorVisitScheduleCount">0</h6>
+                  <span id="doctorVisitScheduleIncrement" class="text-success small pt-1 fw-bold">0%</span>
+                  <span class="text-muted small pt-2 ps-1">increase</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Doctor’s visit schedule -->
+
+        <!-- Doctor’s visit closed -->
+        <div class="col-xxl-4 col-md-4">
+          <div class="card shadow-sm info-card sales-card feature-cards">
+            <div class="filter" data-type="doctor-visit-closed">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li><a class="dropdown-item" href="#" data-period="all">All</a></li>
+                <li><a class="dropdown-item" href="#" data-period="today">Today</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisWeek">This Week</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisMonth">This Month</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisYear">This Year</a></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Doctor’s visit closed</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-arrow-right-circle-fill"></i>
+                </div>
+                <div class="ps-3">
+                  <h6 id="doctorVisitCompletedCount">0</h6>
+                  <span id="doctorVisitClosedIncrement" class="text-success small pt-1 fw-bold">0%</span>
+                  <span class="text-muted small pt-2 ps-1">increase</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Doctor’s visit closed -->
+
+        <!-- Chemist’s visit schedule -->
+        <div class="col-xxl-4 col-md-4">
+          <div class="card shadow-sm info-card sales-card feature-cards">
+            <div class="filter" data-type="chemist-visit-schedule">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li><a class="dropdown-item" href="#" data-period="all">All</a></li>
+                <li><a class="dropdown-item" href="#" data-period="today">Today</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisWeek">This Week</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisMonth">This Month</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisYear">This Year</a></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Chemist’s visit schedule</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-arrow-right-circle-fill"></i>
+                </div>
+                <div class="ps-3">
+                  <h6 id="chemistVisitScheduleCount">0</h6>
+                  <span id="chemistVisitScheduleIncrement" class="text-success small pt-1 fw-bold">0%</span>
+                  <span class="text-muted small pt-2 ps-1">increase</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Chemist’s visit schedule -->
+
+        <!-- Chemist’s visit closed -->
+        <div class="col-xxl-4 col-md-4">
+          <div class="card shadow-sm info-card sales-card feature-cards">
+            <div class="filter" data-type="chemist-visit-closed">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li><a class="dropdown-item" href="#" data-period="all">All</a></li>
+                <li><a class="dropdown-item" href="#" data-period="today">Today</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisWeek">This Week</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisMonth">This Month</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisYear">This Year</a></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Chemist’s visit closed</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-arrow-right-circle-fill"></i>
+                </div>
+                <div class="ps-3">
+                  <h6 id="chemistVisitCompletedCount">0</h6>
+                  <span id="chemistVisitClosedIncrement" class="text-success small pt-1 fw-bold">0%</span>
+                  <span class="text-muted small pt-2 ps-1">increase</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Chemist’s visit closed -->
+
+        <!-- Total leaves -->
+        <div class="col-xxl-4 col-md-4">
+          <div class="card shadow-sm info-card sales-card feature-cards">
+            <div class="filter" data-type="total-leaves">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li><a class="dropdown-item" href="#" data-period="all">All</a></li>
+                <li><a class="dropdown-item" href="#" data-period="today">Today</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisWeek">This Week</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisMonth">This Month</a></li>
+                <li><a class="dropdown-item" href="#" data-period="thisYear">This Year</a></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Total leaves</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-arrow-right-circle-fill"></i>
+                </div>
+                <div class="ps-3">
+                  <h6 id="totalLeavesCount">0</h6>
+                  <span id="totalLeavesIncrement" class="text-success small pt-1 fw-bold">0%</span>
+                  <span class="text-muted small pt-2 ps-1">increase</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Total leaves -->
+
+        <!-- Average company coverage (SKIPPED as per requirement) -->
+        <div class="col-xxl-4 col-md-4">
+          <div class="card shadow-sm info-card sales-card feature-cards">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Average company coverage</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-arrow-right-circle-fill"></i>
+                </div>
+                <div class="ps-3">
+                  <h6 id="averageCompanyCoverage">0</h6>
+                  <span  id="totalCoverageIncrement"  class="text-success small pt-1 fw-bold">0%</span>
+                  <span class="text-muted small pt-2 ps-1">increase</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Average company coverage -->
+      </div>
+
+
+      
+
+      
+
+      <div class="row mt-3">
+          
+        <div class="col-lg-6">
+            <div class="card p-3 shadow-sm">
+          <select class="form-select" id="slt_emp_option">
+            <option disabled selected>Select Employee</option>
+          </select>
+          <div id="location">
+         </div>
+        <div id="map" class="rounded" style="height: 315px; margin-top: 20px;"></div>
+         </div>
+         </div>
+
+         <br>
+
+         
+
+        <div class="col-lg-6">
+          <div class="card p-3 shadow-sm">
+            <!-- Table Markup -->
+            <table class="table datatable admin-dashboard">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>No. of Days</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="leaveTableBody">
+              </tbody>
+            </table>
+
+            <a href="leave-application.html" class="btn btn-sm btn-danger mt-3">View all</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+  <div id="footer-placeholder"></div>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#header-placeholder").load("header.html", function () {
+        if ($('.toggle-sidebar-btn')) {
+          $('.toggle-sidebar-btn').on('click', function (e) {
+            $('body').toggleClass('toggle-sidebar');
+          });
+        }
+      });
+
+      $("#sidebar-placeholder").load("sidebar.html");
+      $("#footer-placeholder").load("footer.html");
+    });
+  </script>
+
+<!-- Template Main JS File -->
+<!-- <script src="assets/js/main.js"></script> -->
+<script type="module" src="assets/custom-js/index.js"></script>
+ <script type="module" src="assets/custom-js/location.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+</body>

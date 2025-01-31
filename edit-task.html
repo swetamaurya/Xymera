@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Xymera - Operations Management System</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <div id="header-placeholder"></div>
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <div id="sidebar-placeholder"></div><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Add Employee</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item fw-normal text-dark mt-2">Fill out this form to list a new employee.</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section bg-white p-3 rounded shadow-sm">
+      <div class="row">
+        <div class="col-lg-12">
+          <form action="" id="" method="post" accept-charset="utf-8">
+
+              <div class="mb-3">
+                  <label for="ref_emp_id" class="form-check-label small mb-2">Select Status <b>*</b></label>
+                  <select name="ref_emp_id[]" id="ref_emp_id" class="form-select" required>
+                      <option value="dmdzYnJWbENTbmd0MkpSZG9rdU5rdz09">Ready to Start</option>
+                      <option value="dmdzYnJWbENTbmd0MkpSZG9rdU5rdz09">On Hold</option>
+                      <option value="dmdzYnJWbENTbmd0MkpSZG9rdU5rdz09">In-progress</option>
+                      <option value="dmdzYnJWbENTbmd0MkpSZG9rdU5rdz09">Under Inspection</option>
+                      <option value="dmdzYnJWbENTbmd0MkpSZG9rdU5rdz09">Completed</option>
+                  </select>
+              </div>
+
+              <div class="mb-3">
+                  <label for="title" class="form-check-label small mb-2">Title <b>*</b></label>
+                  <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="" required>
+              </div>
+
+              <div class="mb-3">
+                  <label for="details" class="form-check-label small mb-2">Details</label>
+                  <textarea class="form-control" name="details" id="details" rows="3"></textarea>
+              </div>
+
+              <div class="mb-3">
+                  <label for="deadline" class="form-check-label small mb-2">Deadline</label>
+                  <input type="date" class="form-control" name="deadline" id="deadline" placeholder="Deadline" value="28 Oct, 2024">
+              </div>
+
+              <div class="mb-3">
+                  <label for="ref_emp_id" class="form-check-label small mb-2">Select Employees <b>*</b></label>
+                  <select name="ref_emp_id[]" id="ref_emp_id" class="form-select" required>
+                      <option value="dmdzYnJWbENTbmd0MkpSZG9rdU5rdz09">John Doe (Sample)</option>
+                  </select>
+              </div>
+
+              <div class="mb-3">
+                  <label for="ref_client_id" class="form-check-label small mb-2">Select Client</label>
+                  <select name="ref_client_id[]" id="ref_client_id" class="form-select">
+                      <option value="dmdzYnJWbENTbmd0MkpSZG9rdU5rdz09">John Smith (Dummy) (Dummy Organization)</option>
+                  </select>
+              </div>
+
+              <div class="mb-3">
+                  <label class="form-check-label small mb-2 small">Set Priority <b>*</b></label>
+                  <div class="row ps-3">
+                  <div class="form-check col-md-1">
+                      <input type="radio" class="form-check-input" name="work_priority" value="1" id="priorityHigh" required>
+                      <label for="priorityHigh" class="form-check-label small mb-2">High</label>
+                  </div>
+                  <div class="form-check col-md-1">
+                      <input type="radio" class="form-check-input" name="work_priority" value="2" id="priorityNormal" required>
+                      <label for="priorityNormal" class="form-check-label small mb-2">Normal</label>
+                  </div>
+                  <div class="form-check col-md-1">
+                      <input type="radio" class="form-check-input" name="work_priority" value="3" id="priorityLow" required>
+                      <label for="priorityLow" class="form-check-label small mb-2">Low</label>
+                  </div>
+                    </div>
+              </div>
+
+              <div class="d-flex justify-content-end">
+                  <button type="submit" class="me-3 btn btn-primary">Add</button>
+                  <a href="https://web.twib.online/company/user/manage_works" class="btn btn-danger">Cancel</a>
+              </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+  <div id="footer-placeholder"></div>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Xymera - Operations Management System</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <div id="header-placeholder"></div>
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <div id="sidebar-placeholder"></div><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>View Doctor</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section bg-white p-3 rounded shadow-sm">
+      <div class="row">
+
+        <div class="col-sm-2">
+          <img id="user_profile_img" src="https://pinnacle.works/wp-content/uploads/2022/06/dummy-image.jpg" style=" width: 100%;" alt="">
+        </div>
+        <div class="col-sm-10">
+          
+          <div class="mb-3 ">
+            <label for="status_role" class="form-label small">
+              <span>Doctor Status</span>
+            </label>
+            <select class="form-control" id="status_role" name="status_role" disabled>
+                <option value="Active">Active</option>
+                <option value="Inactive" selected>Inactive</option>
+            </select>
+          </div>
+          <div class="mb-3">
+              <label for="name" class="form-label small"><span>Doctor ID</span></label>
+              <input type="text" class="form-control disabled" name="name" id="id" disabled>
+          </div>
+          <div class="mb-3  apply-validation-div">
+              <label for="name" class="form-label small d-flex justify-content-between">
+                <span>Doctor Name</span>
+              </label>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter Doctor Name" required disabled>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <form id="edit-doctor" class="needs-validation" accept-charset="utf-8" novalidate>
+
+              <div class="mb-3">
+                  <label for="email" class="form-label small">Doctor Email Id</label>
+                  <input type="email" class="form-control disabled" disabled name="email" id="email" placeholder="Enter Doctor Account Email Id">
+              </div>
+
+              <div class="mb-3">
+                  <label for="mobile" class="form-label small">Doctor Mobile No. </label>
+                  <input type="text" class="form-control disabled" disabled name="mobile" id="mobile" placeholder="Enter Doctor Mobile Number">
+              </div>
+
+            
+              <div class="mb-3">
+                <label for="address" class="form-label small">Doctor Address</label>
+                <input type="text" class="form-control disabled" disabled  name="text" id="address" placeholder="Enter Doctor Address" required>
+              </div>
+  
+
+              <div class="mb-3">
+                  <a href="javascript:;" onclick="show_advance_fields(this);" class="btn btn-sm btn-primary">Show Advance Fields <i class="fas fa-angle-down"></i></a>
+              </div>
+
+              <div class="advance-emp-fields d-none">
+                  <div class="row">
+                      <div class="col-md-6 mb-3">
+                          <label for="shift_start" class="form-label">Doctor Timing 1 (Morning)</label>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="" class="form-label small">From</label>
+                              <input type="time" class="form-control disabled" disabled name="shift_start" id="d_t_1_from">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="" class="form-label small">To</label>
+                              <input type="time" class="form-control disabled" disabled name="shift_start" id="d_t_1_to">
+                            </div>
+                          </div>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label for="shift_start" class="form-label">Doctor Timing 2 (Evening)</label>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="" class="form-label small">From</label>
+                            <input type="time" class="form-control disabled" disabled name="shift_start" id="d_t_2_from">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="" class="form-label small">To</label>
+                            <input type="time" class="form-control disabled" disabled name="shift_start" id="d_t_2_to">
+                          </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-6 mb-3 apply-validation-div">
+                      <label for="noOfFeq" class="form-label small d-flex justify-content-between">
+                        <span>No. Of Frequency</span>
+                      </label>
+                      <input type="text" class="form-control" name="noOfFeq" id="noOfFeq" disabled placeholder="Enter Total Number Of Frequency" required>
+                    </div>
+      
+
+                    <div class="col-md-6 mb-3 apply-validation-div">
+                      <label for="categoryyy" class="form-label small d-flex justify-content-between">
+                        <span>Category</span>
+                      </label>
+                      <input type="text" class="form-control" name="categoryyy" id="categoryyy" disabled placeholder="Enter Category" required>
+                    </div>
+      
+
+                      
+                      <div class="col-md-6 mb-3">
+                        <label for="speciality" class="form-label small">Speciality</label>
+                        <input type="text" class="form-control disabled" disabled name="speciality" id="speciality" placeholder="Enter Doctor Speciality">
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                          <label for="doob" class="form-label small">Date Of Onboarding</label>
+                          <input type="date" class="form-control disabled" disabled name="doob" id="doob" >
+                      </div>
+
+                      <div class="mb-3d-none" style="display: none;">
+                        <label for="photo" class="form-label small">Upload Doctor Photo</label>
+                        <input type="file" class="form-control disabled" name="photo" id="photo" accept="image/*" disabled>
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="d-flex justify-content-end">
+                  <!-- <button type="submit"  id="register" class="btn btn-primary me-2">Update</button> -->
+                  <button  onclick="history.back()" class="btn btn-secondary">GO TO BACK</button>
+              </div>
+          </form>
+
+          <!-- JavaScript to toggle visibility -->
+          <script>
+              function show_advance_fields(btn) {
+                  const advancedFields = document.querySelector('.advance-emp-fields');
+                  advancedFields.classList.toggle('d-none');
+                  btn.innerHTML = advancedFields.classList.contains('d-none') ? 'Show Advance Fields <i class="fas fa-angle-down"></i>' : 'Hide Advance Fields <i class="fas fa-angle-up"></i>';
+              }
+          </script>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+  <div id="footer-placeholder"></div>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <!-- <script src="assets/vendor/simple-datatables/simple-datatables.js"></script> -->
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <!-- <script src="assets/js/main.js"></script> -->
+  <!-- <script type="module" src="assets/custom-js/addEmployee.js"></script> -->
+   <script type="module" src="assets/custom-js/edit-doctor.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#header-placeholder").load("header.html", function () {
+        if ($('.toggle-sidebar-btn')) {
+          $('.toggle-sidebar-btn').on('click', function (e) {
+            $('body').toggleClass('toggle-sidebar');
+          });
+        }
+      });
+
+      $("#sidebar-placeholder").load("sidebar.html");
+      $("#footer-placeholder").load("footer.html");
+    });
+  </script>
+
+
+</body>

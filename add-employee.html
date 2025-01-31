@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Xymera - Operations Management System</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <div id="header-placeholder"></div>
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <div id="sidebar-placeholder"></div><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Add Employee</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item fw-normal text-dark mt-2">Fill out this form to list a new employee.</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section bg-white p-3 rounded shadow-sm">
+      <div class="row">
+        <div class="col-lg-12">
+          <form id="add-employee" class="needs-validation" accept-charset="utf-8" novalidate>
+
+              <div class="mb-3  apply-validation-div">
+                  <label for="name" class="form-label small d-flex justify-content-between">
+                    <span>Employee Name <span class="text-danger">*</span></span>
+                  </label>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter Employee Name" required>
+              </div>
+
+              <div class="mb-3  apply-validation-div">
+                  <label for="email" class="form-label small d-flex justify-content-between">
+                    <span>Employee Email Id <span class="text-danger">*</span></span>
+                  </label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Enter Employee Email Id" required>
+              </div>
+              
+              <div class="mb-3  apply-validation-div">
+                <label for="password" class="form-label small d-flex justify-content-between">
+                  <span>Employee Password <span class="text-danger">*</span></span>
+                </label>
+                <input type="password" class="form-control"  name="password" id="password" placeholder="Enter Employee Password" required>
+              </div>
+
+
+              <div class="mb-3  apply-validation-div">
+                  <label for="mobile" class="form-label small d-flex justify-content-between ">
+                    <span>Employee Mobile No. <span class="text-danger">*</span></span>
+                  </label>
+                  <input type="tel" class="form-control" name="mobile" id="mobile" placeholder="Enter Employee Mobile Number" required>
+              </div>
+
+              <div class="mb-3 apply-validation-div">
+                  <label for="role" class="form-label small d-flex justify-content-between">
+                    <span>Employee Role <span class="text-danger">*</span></span>
+                  </label>
+                  <select class="form-control" id="role" name="role" required>
+                      <option value="" disabled="" selected="">Select Employee Role</option>
+                      <option value="Employee">Employee</option>
+                      <option value="Manager">Manager</option>
+                      <option value="HR">HR</option>
+                      <!-- <option value="Admin">Admin</option> -->
+                  </select>
+              </div>
+
+              <div class="mb-3 apply-validation-div">
+                  <label for="status_role" class="form-label small d-flex justify-content-between">
+                    <span>Employee Status <span class="text-danger">*</span></span>
+                  </label>
+                  <select class="form-control" id="status_role" name="status_role" required>
+                      <option value="Active">Active</option>
+                      <option value="Inactive"  selected>Inactive</option>
+                  </select>
+              </div>
+
+             <div class="mb-3">
+                  <a href="javascript:;" onclick="show_advance_fields(this);" class="btn btn-sm btn-primary">Show Advance Fields <i class="fas fa-angle-down"></i></a>
+              </div>
+              <div class="advance-emp-fields d-none">
+                  <div class="row">
+                      <div class="col-md-6 mb-3">
+                          <label for="shift_start" class="form-label small">Employee Shift Start Time</label>
+                          <input type="time" class="form-control" name="shift_start" id="shift_start">
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                          <label for="shift_end" class="form-label small">Employee Shift End Time</label>
+                          <input type="time" class="form-control" name="shift_end" id="shift_end">
+                      </div>
+
+
+                      <div class="col-md-6 mb-3 apply-validation-div">
+                          <label for="department" class="form-label small d-flex justify-content-between">
+                            <span>Employee Department <span class="text-danger">*</span></span>
+                          </label>
+                          <select class="form-control" id="department" required>
+                            <option value="" disabled="" selected="">Select Department</option>
+                          </select>
+                      </div>
+                      
+                      <div class="col-md-6 mb-3 apply-validation-div">
+                        <label for="designation" class="form-label small d-flex justify-content-between">
+                          <span>Employee Designation <span class="text-danger">*</span></span>
+                        </label>
+                        <input type="text" class="form-control" name="designation" id="designation" placeholder="Enter Employee Designation" required>
+                      </div>
+
+                      <div class="col-md-6 mb-3 apply-validation-div">
+                          <label for="doj" class="form-label small d-flex justify-content-between">
+                            <span>Date Of Joining <span class="text-danger">*</span></span>
+                          </label>
+                          <input type="date" class="form-control" name="doj" id="doj" required>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                          <label for="per_km_cost" class="form-label small">Per KM Cost <i>(For calculation of daily expense)</i></label>
+                          <input type="number" class="form-control" name="per_km_cost" id="per_km_cost" placeholder="Enter KM wise allowance" pattern="[0-9]+([\.,][0-9]+)?" step="0.01">
+                      </div>
+
+                      <div class="mb-3 apply-validation-div">
+                        <label for="photo" class="form-label small d-flex justify-content-between">
+                          <span>Upload Employee Photo <span class="text-danger">*</span></span>
+                        </label>
+                        <input type="file" class="form-control" name="photo" id="photo" accept="image/*" required>
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="d-flex justify-content-end">
+                  <button type="submit"  id="register" class="btn btn-primary me-2">Add</button>
+                  <button  onclick="history.back()" class="btn btn-secondary">Cancel</button>
+              </div>
+          </form>
+
+          <!-- JavaScript to toggle visibility -->
+          <script>
+              function show_advance_fields(btn) {
+                  const advancedFields = document.querySelector('.advance-emp-fields');
+                  advancedFields.classList.toggle('d-none');
+                  btn.innerHTML = advancedFields.classList.contains('d-none') ? 'Show Advance Fields <i class="fas fa-angle-down"></i>' : 'Hide Advance Fields <i class="fas fa-angle-up"></i>';
+              }
+          </script>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+  <div id="footer-placeholder"></div>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <!-- <script src="assets/vendor/simple-datatables/simple-datatables.js"></script> -->
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <!-- <script src="assets/js/main.js"></script> -->
+  <!-- <script type="module" src="assets/custom-js/addEmployee.js"></script> -->
+   <script type="module" src="assets/custom-js/add-employee.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#header-placeholder").load("header.html", function () {
+        if ($('.toggle-sidebar-btn')) {
+          $('.toggle-sidebar-btn').on('click', function (e) {
+            $('body').toggleClass('toggle-sidebar');
+          });
+        }
+      });
+
+      $("#sidebar-placeholder").load("sidebar.html");
+      $("#footer-placeholder").load("footer.html");
+    });
+  </script>
+
+
+</body>

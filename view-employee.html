@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Xymera - Operations Management System</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <div id="header-placeholder"></div>
+  <!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <div id="sidebar-placeholder"></div><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>View Employee</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section bg-white p-3 rounded shadow-sm">
+      <div class="row">
+
+        <div class="col-sm-2">
+          <img id="user_profile_img" src="https://pinnacle.works/wp-content/uploads/2022/06/dummy-image.jpg" style="width: 100%;" alt="">
+        </div>
+        <div class="col-sm-10">
+          <div class="mb-3 ">
+            <label for="status_role" class="form-label small">
+              <span>Employee Status</span>
+            </label>
+            <select class="form-control" id="status_role" name="status_role" disabled>
+                <option value="" disabled="" selected="">Select Employee Account Status</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+              <label for="role" class="form-label small">Employee Role</label>
+              <select class="form-control disabled" id="role" name="role" disabled>
+                  <option value="" disabled="" selected="">Select Role</option>
+                  <option value="Employee">Employee</option>
+                  <option value="Manager">Manager</option>
+                  <option value="HR">HR</option>
+                  <option value="Admin">Admin</option>
+              </select>
+          </div>
+          <div class="mb-3">
+              <label for="name" class="form-label small">Employee Id </label>
+              <input type="text" class="form-control disabled" id="userId" disabled>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <form id="edit-employee" class="needs-validation" accept-charset="utf-8" novalidate>
+
+
+              <div class="mb-3">
+                  <label for="name" class="form-label small">Employee Name </label>
+                  <input type="text" class="form-control disabled" disabled name="name" id="name" placeholder="Enter Employee Name" required>
+              </div>
+
+              <div class="mb-3">
+                  <label for="email" class="form-label small">Employee Email Id </label>
+                  <input type="email" class="form-control disabled" disabled name="email" id="email" placeholder="Enter Employee Account Email Id">
+              </div>
+              
+              <div class="mb-3 d-none" style="display: none;">
+                <label for="password" class="form-label small">Employee Password </label>
+                <input type="password" class="form-control disabled" disabled  name="password" id="password" placeholder="Enter Employee Password" required>
+              </div>
+
+
+              <div class="mb-3">
+                  <label for="mobile" class="form-label small">Employee Mobile No.</label>
+                  <input type="text" class="form-control disabled" disabled name="mobile" id="mobile" placeholder="Enter Employee Mobile Number">
+              </div>
+
+              <div class="mb-3">
+                  <a href="javascript:;" onclick="show_advance_fields(this);" class="btn btn-sm btn-primary">Show Advance Fields <i class="fas fa-angle-down"></i></a>
+              </div>
+
+              <div class="advance-emp-fields d-none">
+                  <div class="row">
+                      <div class="col-md-6 mb-3">
+                          <label for="shift_start" class="form-label small">Employee Shift Start Time</label>
+                          <input type="time" class="form-control disabled" disabled name="shift_start" id="shift_start">
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                          <label for="shift_end" class="form-label small">Employee Shift End Time</label>
+                          <input type="time" class="form-control disabled" disabled name="shift_end" id="shift_end">
+                      </div>
+
+
+                      <div class="col-md-6 mb-3">
+                          <label for="department" class="form-label small">Employee Department</label>
+                          <select class="form-control disabled" disabled id="department">
+                            <option value="" disabled="" selected="">Select Department</option>
+                          </select>
+                      </div>
+                      
+                      <div class="col-md-6 mb-3">
+                        <label for="designation" class="form-label small">Employee Designation</label>
+                        <input type="text" class="form-control disabled" disabled name="designation" id="designation" placeholder="Enter Employee Designation">
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                          <label for="doj" class="form-label small">Date Of Joining</label>
+                          <input type="date" class="form-control disabled" disabled name="doj" id="doj" value="2024-10-28">
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                          <label for="per_km_cost" class="form-label small">Per KM Cost <i>(For calculation of daily expense)</i></label>
+                          <input type="number" class="form-control disabled" disabled name="per_km_cost" id="per_km_cost" placeholder="Enter KM wise allowance" pattern="[0-9]+([\.,][0-9]+)?" step="0.01">
+                      </div>
+
+                      <div class="mb-3 d-none" style="display:  none;">
+                        <label for="photo" class="form-label small">Upload Employee Photo</label>
+                        <input type="file" class="form-control disabled" disabled name="photo" id="photo" accept="image/*">
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="d-flex justify-content-end">
+                  <!-- <button type="submit"  id="register" class="btn btn-primary me-2">Add</button> -->
+                  <button  onclick="history.back()" class="btn btn-secondary">GO TO BACK</button>
+              </div>
+          </form>
+
+          <!-- JavaScript to toggle visibility -->
+          <script>
+              function show_advance_fields(btn) {
+                  const advancedFields = document.querySelector('.advance-emp-fields');
+                  advancedFields.classList.toggle('d-none');
+                  btn.innerHTML = advancedFields.classList.contains('d-none') ? 'Show Advance Fields <i class="fas fa-angle-down"></i>' : 'Hide Advance Fields <i class="fas fa-angle-up"></i>';
+              }
+          </script>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+  <div id="footer-placeholder"></div>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <!-- <script src="assets/vendor/simple-datatables/simple-datatables.js"></script> -->
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <!-- <script src="assets/js/main.js"></script> -->
+  <!-- <script type="module" src="assets/custom-js/addEmployee.js"></script> -->
+   <script type="module" src="assets/custom-js/edit-employee.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#header-placeholder").load("header.html", function () {
+        if ($('.toggle-sidebar-btn')) {
+          $('.toggle-sidebar-btn').on('click', function (e) {
+            $('body').toggleClass('toggle-sidebar');
+          });
+        }
+      });
+
+      $("#sidebar-placeholder").load("sidebar.html");
+      $("#footer-placeholder").load("footer.html");
+    });
+  </script>
+
+
+</body>
