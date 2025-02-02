@@ -2,9 +2,9 @@
 export const TOKEN = localStorage.getItem('token');
 // -------------------------------------------------------------
 // -------------------------------------------------------------
-const domain = `https://xymera-crm.onrender.com`;
-// const domain = `http://localhost:8000`;
-// const domain = `https://www.ns3.microcodepgmt.com`;
+// const domain = `https://xymera-crm.onrender.com`;
+const domain = `http://localhost:8000`;
+// const domain = `https://www.ns3.epgmt.com`;
 // const domain = ``;
 // -------------------------------------------------------------
 // ---------------------END POINTS------------------------------
